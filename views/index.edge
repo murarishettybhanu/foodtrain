@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" href="img/favicon.gif">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -44,17 +45,33 @@
               </div>
               <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a class="navbar-brand" style="padding-top:40px;" href="/">Home</a></li>
+                  <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/">Home</a></li>
+                   <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
+                    </li>
+
+                  @if(!admin)
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+                  @endif
                   @if(!auth)
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/login">Login</a></li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/register">Sign
                       up</a></li>
                   @endif
-                  @if(auth)
+                  @if(auth && !admin)
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/myorders">MyOrders</a>
+                    </li>
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
+                      {{user.username}}</a></li>
+                  @endif
+                  @if(admin)
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/posts">Reservations</a></li>
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/orders">Orders</a></li>
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
+                      {{user.username}}</a></li>
                   @endif
                 </ul>
 
@@ -212,7 +229,7 @@
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
-            <img src="img/res011.jpeg" alt="" class="img-responsive">
+            <img src="img/res011.jpg" alt="" class="img-responsive">
           </div>
         </div>
         <div class="col-md-1"></div>
@@ -230,62 +247,36 @@
       padding: 5px;
     }
   </style>
-  <div class="row">
-    <div class="column">
-      <img src="img/IMG_20190114_220311.jpg" style="width:100%">
-    </div>
-    <div class="column">
-      <img src="img/IMG_20190114_221722.jpg" style="width:100%">
-    </div>
-    <div class="column">
-      <img src="img/imageedit_6_5841161474.jpg" alt="Mountains" style="width:100%">
-    </div>
-  </div>
-
-
   <!--/about-->
   <footer class="footer text-center">
     <div class="footer-top">
       <div class="row">
         <div class="col-md-offset-3 col-md-6 text-right">
           <div class="widget">
+            <center>
 
+              <h4 class="widget-title">Online Food Court Services</h4>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1547644976911!6m8!1m7!1sCAoSLEFGMVFpcE5yMG1BNFV0aDNiYVdQQjViVlMtVlowcS1wTGJMVjhmX1dYT0lQ!2m2!1d17.2340802!2d78.56344589999999!3f187.08357229496397!4f6.686964798997863!5f0.7820865974627469"
+                width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-            <h4 class="widget-title">Online Food Court Services</h4>
-            <!-- Start of WebFreeCounter Code -->
-            <a href="https://www.webfreecounter.com/" target="_blank"><img
-                src="https://www.webfreecounter.com/hit.php?id=zemndxd&nd=6&style=7" border="0" alt="hit counter"></a>
-            <!-- End of WebFreeCounter Code -->
-            <br>
-            <br>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!4v1547644976911!6m8!1m7!1sCAoSLEFGMVFpcE5yMG1BNFV0aDNiYVdQQjViVlMtVlowcS1wTGJMVjhmX1dYT0lQ!2m2!1d17.2340802!2d78.56344589999999!3f187.08357229496397!4f6.686964798997863!5f0.7820865974627469"
-              width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-            <br>
-            <br>
-
-            <address>Adjacent to TCS Adibatla<br>Hyderabad-501510<br>thefoodtrain3008@gmail.com</address>
-            <div class="social-list">
-              <a href="https://www.instagram.com/akhil_the_food_train/"><img src="img/instagram.png"> </a>
-              <a href="https://m.facebook.com/The-Food-Train-372415413585878/"><img
-                  src="img/imageedit_1_3740057647.png"></a>
-            </div>
-            <p class="copyright clear-float">
-              © Copyright. All Rights Reserved
-              <div class="credits">
-                <!--
-                  All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Online Food Court Services
-                -->
-                Designed by TeamC2
+              <address>Adjacent to TCS Adibatla<br>Hyderabad-501510<br>thefoodtrain3008@gmail.com</address>
+              <div class="social-list">
+                <a href="https://www.instagram.com/akhil_the_food_train/"><img src="img/instagram.png"> </a>
+                <a href="https://m.facebook.com/The-Food-Train-372415413585878/"><img
+                    src="img/imageedit_1_3740057647.png"></a>
               </div>
-            </p>
+              <p class="copyright clear-float">
+                © Copyright. All Rights Reserved
+                <div class="credits">
+                  Designed by TeamC2
+                </div>
+              </p>
           </div>
         </div>
       </div>
     </div>
+    </center>
   </footer>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery.easing.min.js"></script>

@@ -38,8 +38,10 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/">Home</a></li>
+                                        <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a></li>
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+                
                     @if(!auth)
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/login">Login</a></li>
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/register">Sign
@@ -47,7 +49,11 @@
                     @endif
                     @if(auth)
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
-                    <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/reserve">Reserve</a></li>
+                   <li><a class="navbar-brand" style="padding-top:40px;" href="/myorders">MyOrders</a>
+                    </li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
+                            {{user.username}}</a></li>
                     @endif
                 </ul>
 
@@ -90,9 +96,9 @@
                         </div>
                         <div class="media-body">
                             <h4 class="dark-blue regular">Opening Hours</h4>
-                            <p class="light-blue regular alt-p"> Monday to Friday 09.00 - 24:00</p>
+                            <p class="light-blue regular alt-p"> Monday to Friday 09.00am- 11:00pm</p>
                             <p class="light-blue regular alt-p">
-                                Friday and Sunday 08:00 - 03.00
+                                Friday and Sunday 08:00am - 03.00pm
                             </p>
                         </div>
                     </div>
@@ -103,45 +109,50 @@
                         <div id="errormessage"></div>
                         <div class="col-md-6 col-sm-6 contact-form pad-form">
                             <div class="form-group label-floating is-empty">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input required type="text" name="name" class="form-control" id="name"
+                                    placeholder="Your Name" data-rule="minlen:4"
+                                    data-msg="Please enter at least 4 chars" />
                                 <div class="validation"></div>
                             </div>
 
                         </div>
                         <div class="col-md-6 col-sm-6 contact-form">
                             <div class="form-group">
-                                <input type="date" class="form-control label-floating is-empty" name="date" id="date"
-                                    placeholder="Date" data-rule="required" data-msg="This field is required" />
+                                <input required type="date" class="form-control label-floating is-empty" name="date"
+                                    id="date" placeholder="Date" data-rule="required"
+                                    data-msg="This field is required" />
                                 <div class="validation"></div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 contact-form pad-form">
                             <div class="form-group">
-                                <input type="email" class="form-control label-floating is-empty" name="email" id="email"
-                                    placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                <input required type="email" class="form-control label-floating is-empty" name="email"
+                                    id="email" placeholder="Your Email" data-rule="email"
+                                    data-msg="Please enter a valid email" />
                                 <div class="validation"></div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 contact-form">
                             <div class="form-group">
-                                <input type="time" class="form-control label-floating is-empty" name="time" id="time"
-                                    placeholder="Time" data-rule="required" data-msg="This field is required" />
-                                <div class="validation"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 contact-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control label-floating is-empty" name="phone" id="phone"
-                                    placeholder="Phone" data-rule="required" data-msg="This field is required" />
-                                <div class="validation"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 contact-form">
-                            <div class="form-group">
-                                <input type="number" class="form-control label-floating is-empty" name="quantity"
-                                    min="1" max="10" id="people" placeholder="No.of People" data-rule="required"
+                                <input required type="time" class="form-control label-floating is-empty" name="time"
+                                    id="time" placeholder="Time" data-rule="required"
                                     data-msg="This field is required" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 contact-form">
+                            <div class="form-group">
+                                <input required type="text" class="form-control label-floating is-empty" name="phone"
+                                    id="phone" placeholder="Phone" data-rule="required"
+                                    data-msg="This field is required" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 contact-form">
+                            <div class="form-group">
+                                <input required type="number" class="form-control label-floating is-empty"
+                                    name="quantity" min="1" max="10" id="people" placeholder="No.of People"
+                                    data-rule="required" data-msg="This field is required" />
                                 <div class="validation"></div>
                             </div>
                         </div>
@@ -155,9 +166,7 @@
                         </div>
                         <div class="col-md-12 btnpad">
                             <div class="contacts-btn-pad">
-                                <button class="contacts-btn">Book Table</button> &nspb; <button
-                                    class="contacts-btn" formaction="menu.html">Book Food Items</button>
-                                <p id="adi"></p>
+                                <button class="contacts-btn">Order food</button> &nspb;
                                 <script>
                                     function myfunction() {
                                         var login;
@@ -196,12 +205,6 @@
                         <p class="copyright clear-float">
                             © copyright. All Rights Reserved
                             <div class="credits">
-                                <!--
-                  All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Online Food Court Services
-                -->
                                 Designed by TeamC2
                             </div>
                         </p>

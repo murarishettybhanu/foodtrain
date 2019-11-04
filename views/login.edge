@@ -8,7 +8,7 @@
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords"
     content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
   <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
@@ -85,7 +85,41 @@
   </style>
 </head>
 
-<body>
+<body onload="myFunction()">
+  @if(messages.IncorrectPwd)
+  <script>
+    function myFunction() {
+      swal({
+        title: "You Have Entered an Incorrect Password",
+        timer: 6000,
+        showConfirmButton: false
+      });
+    };
+  </script>
+  @endif
+
+  @if(messages.signup_successfully)
+  <script>
+    function myFunction() {
+      swal({
+        title: "Registered successfully",
+        timer: 6000,
+        showConfirmButton: false
+      });
+    };
+  </script>
+  @endif
+  @if(messages.EmailNotFound)
+  <script>
+    function myFunction() {
+      swal({
+        title: "Email id not found please sign up",
+        timer: 6000,
+        showConfirmButton: false
+      });
+    };
+  </script>
+  @endif
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -102,16 +136,23 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li><a class="navbar-brand" style="padding-top:40px;" href="/">Home</a></li>
+          <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
+          </li>
           <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
           <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+          </li>
           @if(!auth)
-          <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/login">Login</a></li>
+          <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/auth/login">Login</a></li>
           <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/register">Sign
               up</a></li>
           @endif
           @if(auth)
           <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
           <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
+          <li><a class="navbar-brand" style="padding-top:40px;" href="/myorders">MyOrders</a>
+          </li>
+          <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
+              {{user.username}}</a></li>
           @endif
         </ul>
 
@@ -152,16 +193,7 @@
 
     </form>
   </div>
-  <script>
-    function myFunction() {
-      var txt;
-      if (confirm("Press OK to continue..!!")) {
-        txt = "You pressed OK!";
-      } else {
-        txt = "You pressed Cancel!";
-      }
-    }
-  </script>
+
 
   <footer class="footer text-center">
     <div class="footer-top">

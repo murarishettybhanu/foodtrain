@@ -1,6 +1,10 @@
-module.exports = (req, res) => {
-  res.render('register', {
-    errors: req.flash('registrationErrors'),
-    data: req.flash('data')[0]
-  })
-}
+const User = require('../database/models/User')
+
+module.exports = async(req, res) => {
+  const user = await User.findById(req.session.userId);
+
+    res.render('register',{
+      user
+    })
+  }
+  

@@ -52,8 +52,10 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/">Home</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
-                    <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/menu">Menu</a></li>
+
                     @if(!auth)
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/login">Login</a></li>
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/register">Sign
@@ -62,6 +64,8 @@
                     @if(auth)
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
                     <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/myorders">MyOrders</a>
+                    </li>
                     @endif
                 </ul>
 
@@ -77,8 +81,10 @@
                 <div class="col-md-12 text-center marb-35">
                     <h1 class="header-h">Menu List
                         <div style="float: right; cursor: pointer;">
+                            @if(auth)
                             <span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span
                                     class="badge badge-notify my-cart-badge"></span></span>
+                            @endif
                         </div>
                     </h1>
                     <p class="header-p">Food is for eating and good food is to be enjoyed.I think food is actually,very
@@ -107,8 +113,13 @@
                             <span class="menu-subtitle">Served with bone. Classic mulai dish of horse gram sauce cooked
                                 with chicken
                                 and rice.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="1" data-name="Chicken biryani"
-                            data-summary="summary 1" data-price="200" data-quantity="1">Add to Cart</button>
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="1"
+                            data-name="Chicken biryani" data-summary="Served with bone. Classic mulai dish of horse gram sauce cooked
+                            with chicken
+                            and rice." data-price="200" data-quantity="1">Add to Cart</button>
+                        @endif
 
                     </div>
 
@@ -121,9 +132,14 @@
                             <span class="menu-subtitle">A magnificent, extra large portion of the World’s Favourite
                                 Biryani.
                                 Great for sharing. (Serves 3-4 guests) </span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="2" data-name="Chicken biryani Hundi"
-                            data-summary="summary 2" data-price="250" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="2"
+                            data-name="Chicken biryani Hundi" data-summary="A magnificent, extra large portion of the World’s Favourite
+                            Biryani.
+                            Great for sharing. (Serves 3-4 guests)" data-price="250" data-quantity="1">Add to
+                            Cart</button>
+                        @endif
                     </div>
 
                     <div class="breakfast menu-restaurant">
@@ -133,9 +149,13 @@
                             <span class="menu-price">Rs240</span><br>
                             <span class="menu-subtitle">An aromatic mixture of rice, lamb, saffron, herbs
                                 and spices, served with raita and mirchi-ka-salan</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="3" data-name="Mutton B/L Biryani"
-                            data-summary="summary 1" data-price="240" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="3"
+                            data-name="Mutton B/L Biryani" data-summary="An aromatic mixture of rice, lamb, saffron, herbs
+                            and spices, served with raita and mirchi-ka-salan" data-price="240" data-quantity="1">Add
+                            to Cart</button>
+                        @endif
                     </div>
 
                     <div class="breakfast menu-restaurant">
@@ -146,10 +166,14 @@
                             <span class="menu-subtitle">A magnificent, extra large portion of the World’s Favourite
                                 Biryani.
                                 Great for sharing. (Serves 3-4 guests)</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="4"
-                            data-name="Mutton B/L Biryani Hundi" data-summary="summary 1" data-price="300"
-                            data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="4"
+                            data-name="Mutton B/L Biryani Hundi" data-summary="A magnificent, extra large portion of the World’s Favourite
+                            Biryani.
+                            Great for sharing. (Serves 3-4 guests)" data-price="300" data-quantity="1">Add to
+                            Cart</button>
+                        @endif
                     </div>
                     <div class="breakfast menu-restaurant">
                         <span class="clearfix">
@@ -158,9 +182,13 @@
                             <span class="menu-price">Rs150</span><br>
                             <span class="menu-subtitle">Fresh vegetables and basmati rice cooked in layers,
                                 flavoured with saffron, served with raita and mirchi-ka-salan</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="5" data-name="Veg Biryani"
-                            data-summary="summary 1" data-price="150" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="5" data-name="Veg Biryani"
+                            data-summary="Fresh vegetables and basmati rice cooked in layers,
+                            flavoured with saffron, served with raita and mirchi-ka-salan" data-price="150"
+                            data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
                     <div class="breakfast menu-restaurant">
                         <span class="clearfix">
@@ -171,9 +199,13 @@
                             <span class="menu-subtitle">Fresh vegetables and basmati rice cooked in layers,
                                 flavoured with saffron, served with raita and mirchi-ka-salan, Great for sharing.
                                 (Serves 3-4 guests)</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="6" data-name="Veg Biryani Hundi"
-                            data-summary="summary 1" data-price="200" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="6"
+                            data-name="Veg Biryani Hundi" data-summary="Fresh vegetables and basmati rice cooked in layers,
+                            flavoured with saffron, served with raita and mirchi-ka-salan, Great for sharing.
+                            (Serves 3-4 guests)" data-price="200" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="breakfast menu-restaurant">
@@ -183,9 +215,13 @@
                             <span class="menu-price">Rs160</span><br>
                             <span class="menu-subtitle">A seasoned mixture of egg and basmati rice,
                                 served with raita and mirchi-ka-salan</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="7" data-name="Egg Biryani"
-                            data-summary="summary 1" data-price="160" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="7" data-name="Egg Biryani"
+                            data-summary="A seasoned mixture of egg and basmati rice,
+                            served with raita and mirchi-ka-salan" data-price="160" data-quantity="1">Add to
+                            Cart</button>
+                        @endif
                     </div>
                     <div class="breakfast menu-restaurant">
                         <span class="clearfix">
@@ -194,9 +230,13 @@
                             <span class="menu-price">Rs200</span><br>
                             <span class="menu-subtitle">A seasoned mixture of egg and basmati rice,
                                 served with raita and mirchi-ka-salan, Great for sharing. (Serves 3-4 guests)</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="8" data-name="Egg biryani Hundi"
-                            data-summary="summary 1" data-price="200" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="8"
+                            data-name="Egg biryani Hundi" data-summary="A seasoned mixture of egg and basmati rice,
+                            served with raita and mirchi-ka-salan, Great for sharing. (Serves 3-4 guests)"
+                            data-price="200" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
                     <div class="lunch menu-restaurant">
                         <span class="clearfix">
@@ -205,9 +245,12 @@
                             <span class="menu-price">Rs180</span><br>
                             <span class="menu-subtitle">chicken pieces marinated with a range of spices and shallow
                                 fried.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="9" data-name="Chicken kababs"
-                            data-summary="summary 1" data-price="180" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="9" data-name="Chicken kababs"
+                            data-summary="chicken pieces marinated with a range of spices and shallow
+                            fried." data-price="180" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="lunch menu-restaurant">
@@ -217,9 +260,12 @@
                             <span class="menu-price">Rs250</span><br>
                             <span class="menu-subtitle">Succulent mutton legs cooked in aromatic
                                 and flavoured spices.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="10" data-name="Tandoori mutton BBQ"
-                            data-summary="summary 1" data-price="250" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="10"
+                            data-name="Tandoori mutton BBQ" data-summary="Succulent mutton legs cooked in aromatic
+                            and flavoured spices." data-price="250" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
                     <div class="lunch menu-restaurant">
                         <span class="clearfix">
@@ -227,9 +273,12 @@
                             <span class="menu-price">Rs380</span><br>
                             <span class="menu-subtitle">a medley of exciting spices grilled to perfection with mutton
                                 cubes,capsicum,onions.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="11" data-name="BBQ mutton"
-                            data-summary="summary 1" data-price="380" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="11" data-name="BBQ mutton"
+                            data-summary="a medley of exciting spices grilled to perfection with mutton
+                            cubes,capsicum,onions." data-price="380" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="lunch menu-restaurant">
@@ -238,9 +287,12 @@
                             <span class="menu-price">Rs200</span><br>
                             <span class="menu-subtitle">thoroughly marinated,mutton cubes are cooked and then grilled on
                                 a skewer</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="12" data-name="Boti kababs"
-                            data-summary="summary 1" data-price="200" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="12" data-name="Boti kababs"
+                            data-summary="thoroughly marinated,mutton cubes are cooked and then grilled on
+                            a skewer" data-price="200" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="lunch menu-restaurant">
@@ -251,9 +303,13 @@
                             <span class="menu-subtitle">Thin strips of meat are marinated with garlic,yogurt and grilled
                                 to
                                 perfection.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="13" data-name="BBQ mutton Chops"
-                            data-summary="summary 1" data-price="350" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="13"
+                            data-name="BBQ mutton Chops" data-summary="Thin strips of meat are marinated with garlic,yogurt and grilled
+                            to
+                            perfection." data-price="350" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="lunch menu-restaurant">
@@ -264,9 +320,13 @@
                             <span class="menu-subtitle">wings rolled in a tangy mixture of chilli powder,and
                                 oregano,cooked to
                                 precision.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="14" data-name="BBQ wings with Coke"
-                            data-summary="summary 1" data-price="250" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="14"
+                            data-name="BBQ wings with Coke" data-summary="wings rolled in a tangy mixture of chilli powder,and
+                            oregano,cooked to
+                            precision." data-price="250" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="lunch menu-restaurant">
@@ -276,9 +336,12 @@
                             <span class="menu-price">Rs290</span><br>
                             <span class="menu-subtitle">Succulent kebabs are cooked in aromatic
                                 and flavoured spices.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="15" data-name="Grilled Asian kababs"
-                            data-summary="summary 1" data-price="290" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="15"
+                            data-name="Grilled Asian kababs" data-summary="Succulent kebabs are cooked in aromatic
+                            and flavoured spices." data-price="290" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="dinner menu-restaurant">
@@ -286,9 +349,12 @@
                             <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Alu 65</a>
                             <span class="menu-price">Rs160</span><br>
                             <span class="menu-subtitle">crisp and spicy potatoes,good starter snack</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="16" data-name="Alu 65"
-                            data-summary="summary 1" data-price="160" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="16" data-name="Alu 65"
+                            data-summary="crisp and spicy potatoes,good starter snack" data-price="160"
+                            data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="dinner menu-restaurant">
@@ -298,9 +364,12 @@
                             <span class="menu-price">Rs160</span><br>
                             <span class="menu-subtitle">Stir fried vegetable dumplings in spiced
                                 Manchurian sauce</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="17" data-name="Veg manchuria"
-                            data-summary="summary 1" data-price="160" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="17" data-name="Veg manchuria"
+                            data-summary="Stir fried vegetable dumplings in spiced
+                            Manchurian sauce" data-price="160" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="dinner menu-restaurant">
@@ -310,9 +379,13 @@
                             <span class="menu-price">Rs180</span><br>
                             <span class="menu-subtitle">A perfect combination of cottage cheese, tomato,
                                 onion and capsicum in a rich gravy.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="18" data-name="Kadai Paneer"
-                            data-summary="summary 1" data-price="180" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="18" data-name="Kadai Paneer"
+                            data-summary="A perfect combination of cottage cheese, tomato,
+                            onion and capsicum in a rich gravy." data-price="180" data-quantity="1">Add to
+                            Cart</button>
+                        @endif
                     </div>
 
 
@@ -322,9 +395,12 @@
                             <span class="menu-price">Rs160</span><br>
                             <span class="menu-subtitle">Cooked lentil gravy tempered with spiced and clarified butter.
                                 Vegetarian.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="19" data-name="Dal tadka"
-                            data-summary="summary 1" data-price="160" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="19" data-name="Dal tadka"
+                            data-summary="Cooked lentil gravy tempered with spiced and clarified butter.
+                            Vegetarian." data-price="160" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
                     <div class="dinner menu-restaurant">
@@ -333,9 +409,12 @@
                             <span class="menu-price">Rs140</span><br>
                             <span class="menu-subtitle">Curried boiled eggs simmered in spiced
                                 aromatic gravy.</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="20" data-name="Egg curry"
-                            data-summary="summary 1" data-price="140" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="20" data-name="Egg curry"
+                            data-summary="Curried boiled eggs simmered in spiced
+                            aromatic gravy." data-price="140" data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
 
 
@@ -345,18 +424,24 @@
                             <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Kaju masala</a>
                             <span class="menu-price">Rs160</span><br>
                             <span class="menu-subtitle">kaju butter masala with rich,creamy gravy</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="21" data-name="Kaju masala"
-                            data-summary="summary 1" data-price="160" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="21" data-name="Kaju masala"
+                            data-summary="kaju butter masala with rich,creamy gravy" data-price="160"
+                            data-quantity="1">Add to Cart</button>
+                        @endif
                     </div>
                     <div class="dinner menu-restaurant">
                         <span class="clearfix">
                             <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Green Salad</a>
                             <span class="menu-price">Rs100</span><br>
                             <span class="menu-subtitle">A refreshing ,different salad!</span>
-                        </span> <button class="btn btn-danger my-cart-btn" data-id="22" data-name="Green Salad"
-                            data-summary="summary 1" data-price="100" data-quantity="1">Add to Cart</button>
-
+                        </span>
+                        @if(auth)
+                        <button class="btn btn-danger my-cart-btn" onclick="al()" data-id="22" data-name="Green Salad"
+                            data-summary="A refreshing ,different salad!" data-price="100" data-quantity="1">Add to
+                            Cart</button>
+                        @endif
                     </div>
                 </div>
 
@@ -394,7 +479,6 @@
                     numberOfDecimals: 2,
                     cartItems: [],
                     clickOnAddToCart: function ($addTocart) {
-                        goToCartIcon($addTocart);
                     },
                     afterAddOnCart: function (products, totalPrice, totalQuantity) {
                         console.log("afterAddOnCart", products, totalPrice, totalQuantity);
@@ -403,12 +487,25 @@
                         console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
                     },
                     checkoutCart: function (products, totalPrice, totalQuantity) {
-                        var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
-                        checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
+                        var checkoutString = "Total Price: " + totalPrice + "Total Quantity: " + totalQuantity;
+                        checkoutString += " id \t name \t summary \t price \t quantity \t image path";
                         $.each(products, function () {
-                            checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
+                            checkoutString += ("" + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
                         });
-                        alert(checkoutString)
+                        tot = parseInt(totalPrice) * 0.9;
+                        totalp = {}
+                        totalp.totalPrice = tot;
+                        totalp.totalQuantity = totalQuantity;
+                        products.push(totalp)
+                        console.log(products)
+                        $.ajax({
+                            type: 'POST',
+                            data: JSON.stringify(products),
+                            contentType: 'application/json',
+                            url: '/checkout',
+                        });
+                        alert('order placed succesfully')
+                        console.log(checkoutString)
                         console.log("checking out", products, totalPrice, totalQuantity);
                     },
                     getDiscountPrice: function (products, totalPrice, totalQuantity) {
@@ -473,6 +570,11 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="contactform/contactform.js"></script>
+    <script>
+        function al() {
+            alert('Item added successfully')
+        }
+    </script>
 </body>
 
 </html>

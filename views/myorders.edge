@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" href="/img/favicon.gif">
+
+    <title>OFCS/gallery</title>
+</head>
+
+<body class="conatiner">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"
+                    style:width="auto">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <img class="navbar-brand" style="height:100px; padding: 0px;" src="/img/pl.png">
+
+                <a class="navbar-brand" style="padding-top:40px;" href="/">Online Food Court Services</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/">Home</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
+                    </li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+
+                    @if(!auth)
+                    <li><a class="navbar-brand" style="padding-top:40px; " href="/auth/login">Login</a>
+                    </li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/register">Sign
+                            up</a></li>
+                    @endif
+                    @if(auth)
+
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
+                    <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/myorders">MyOrders</a>
+                    </li>
+                    <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
+                            {{user.username}}</a></li>
+                    @endif
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+    <br><br><br><br><br>
+    <div class="container">
+        <h1 class="text-center" style="color: black;">My Orders</h1>
+        <table class="table table-striped" style="color: black;">
+            <tr>
+                <th>
+                    User Name
+                </th>
+                <th>
+                    Date Of Order
+                </th>
+                <th>
+                    Products
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total Bill
+                </th>
+            </tr>
+            @each(order in orders)
+            <tr>
+                <td>{{order.user_name}}</td>
+                <td>{{order.createdAt.toDateString()}}</td>
+                <td>
+                    @each(o in order.Products)
+                    {{o.name}}<br>
+                    @endeach
+                </td>
+                <td>
+                    @each(o in order.Products)
+                    {{o.price}}<br>
+                    @endeach
+                </td>
+                <td>
+                    @each(o in order.Products)
+                    {{o.quantity}}<br>
+                    @endeach
+                </td>
+                <td>{{order.totalPrice}}</td>
+            </tr>
+            @endeach
+        </table>
+    </div>
+    <br><br>
+    <footer class="footer text-center">
+        <div class="footer-top">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6 text-center">
+                    <div class="widget">
+                        <h4 class="widget-title">Online Food Court Services</h4>
+                        <address>Adjacent to TCS Adibatla<br>Telangana, DL 110013<br>thefoodtrain3008@gmail.com
+                        </address>
+                        <div class="social-list">
+                            <a href="https://www.instagram.com/akhil_the_food_train/"><img src="img/instagram.png"> </a>
+                            <a href="https://m.facebook.com/The-Food-Train-372415413585878/"><img
+                                    src="img/imageedit_1_3740057647.png"></a>
+                        </div>
+                        <p class="copyright clear-float">
+                            © copyright. All Rights Reserved
+                            <div class="credits">
+                                Designed by TeamC2
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+</body>
+
+</html>

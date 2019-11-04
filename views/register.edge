@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
 <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="icon" href="/img/favicon.gif">
@@ -22,7 +24,8 @@
 
   /* Full-width input fields */
   input[type=text],
-  input[type=password] {
+  input[type=password],
+  input[type=email] {
     width: 95%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -113,16 +116,23 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a class="navbar-brand" style="padding-top:40px;" href="/">Home</a></li>
+                <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
+
         <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
         <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+                    </li>
         @if(!auth)
         <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/login">Login</a></li>
-        <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/register">Sign
+        <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/auth/register">Sign
             up</a></li>
         @endif
         @if(auth)
         <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
         <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
+        <li><a class="navbar-brand" style="padding-top:40px;" href="/myorders">MyOrders</a>
+                    </li>
+        <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
+            {{user.username}}</a></li>
         @endif
       </ul>
 
@@ -134,12 +144,22 @@
 <br>
 <br>
 
-<body>
-
+<body onload="myFunction()">
+  @if(messages.signup_failed)
+  <script>
+    function myFunction() {
+      swal({
+        title: "Account already exists",
+        timer: 6000,
+        showConfirmButton: false
+      });
+    };
+  </script>
+  @endif
   <div class=" container" style="margin:100px; background-color:white">
 
     <center>
-      <h1 style="color:#ffb03b"><b>Sign Up </b></h1>
+      <h1 style="color:#ffb03b"><b>SIGN UP </b></h1>
 
       <div class="imgcontainer">
         <img src="/img/avatar.jpg" alt="Avatar" class="avatar">
@@ -153,7 +173,7 @@
         <label for="username"><b>Username</b></label>
         <input type="text" placeholder="Enter username" name="username" required>
         <label for="email"><b>Email id</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="email" placeholder="Enter Email" name="email" required>
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Password" name="password" required>
         <label>
@@ -165,6 +185,7 @@
         <div class="clearfix">
 
           <button type="submit">Sign Up</button>
+          
         </div>
     </div>
     </form>

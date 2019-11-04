@@ -1,4 +1,10 @@
-module.exports = (req, res) => {
-    res.render('reserve')
+const User = require('../database/models/User')
+
+module.exports = async(req, res) => {
+  const user = await User.findById(req.session.userId);
+
+    res.render('reserve',{
+      user
+    })
   }
   

@@ -7,6 +7,7 @@ const PostSchema = new mongoose.Schema({
   time: String,
   quantity: String,
   message: String,
+  otp:String,
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

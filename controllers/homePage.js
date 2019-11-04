@@ -1,9 +1,8 @@
-const Post = require('../database/models/Post')
-
+const User = require('../database/models/User')
 module.exports = async (req, res) => {
-  const posts = await Post.find({}).populate('author');
+  const user = await User.findById(req.session.userId);
 
   res.render("index", {
-    posts
+    user
   });
 }
