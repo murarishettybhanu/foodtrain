@@ -1,10 +1,23 @@
 const Order = require('../database/models/orders');
 const User = require("../database/models/User");
 var nodemailer = require('nodemailer');
+var QRCode = require('qrcode');
 
 module.exports = async (req, res) => {
     const user = await User.findOne({ _id: req.session.userId });
     const email = user.email;
+    var otp = "TFT-F-" + Math.floor(Math.random() * (99999 - 100) + 100);
+    
+    QRCode.toFile('./public/otps/' + otp + '.png', otp, {
+        color: {
+            dark: '#000000',  // Blue dots
+            light: '#0000' // Transparent background
+        }
+    }, function (err) {
+        if (err) throw err
+        console.log('done')
+    })
+
     let a = req.body;
     console.log(a);
     const arr = [];
@@ -13,7 +26,6 @@ module.exports = async (req, res) => {
     }
     const totalPrice = a[a.length - 1].totalPrice;
     const totalQuantity = a[a.length - 1].totalQuantity;
-    var otp = "FT" + Math.floor(Math.random() * (99999 - 100) + 100);
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -27,7 +39,12 @@ module.exports = async (req, res) => {
         from: 'adithyakondra007@gmail.com ',
         to: email,
         subject: 'Order Confirmed',
-        text: 'Thanks for ordering with us your OTP is ' + otp + ' Show this OTP at the counter and redeem your order.'
+        html: "QR Code: <img src='cid:"+otp+"'/><br><p>Thanks for ordering with us your OTP is " + otp + " Show this OTP at the counter and redeem your order.</p>",
+        attachments: [{
+            filename: otp+'.png',
+            path: './public/otps/'+otp+'.png',
+            cid: otp
+        }]
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

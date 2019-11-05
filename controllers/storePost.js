@@ -5,7 +5,7 @@ var QRCode = require('qrcode')
 
 
 module.exports = async (req, res) => {
-  var otp = "FT" + Math.floor(Math.random() * (99999 - 100) + 100);
+  var otp = "TFT-T-" + Math.floor(Math.random() * (99999 - 100) + 100);
   const user = await User.findOne({ _id: req.session.userId });
   const email = user.email;
   console.log(email);
@@ -33,7 +33,6 @@ module.exports = async (req, res) => {
     from: 'adithyakondra007@gmail.com ',
     to: email,
     subject: 'Table Reserved',
-    text: '',
     html: "QR Code: <img src='cid:"+otp+"'/><br><p>Thanks for Reserving a table with us, your OTP is " + otp + " Show this QR/OTP at the counter to confirm the table.</p>",
     attachments: [{
         filename: otp+'.png',

@@ -17,12 +17,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 </head>
 <a href="/"><button class="btn btn-primary">BACK</button></a>
 
 <body class="container mt-5">
     <h1 class="text-center">ORDERS</h1><br>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><br><br>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for OTP" title="Type in a name">
+    &nbsp;
+    <button onclick="scan()" class="btn btn-primary">Scan</button>
+    <button onclick="myFunction()" class="btn btn-primary">Search</button>
+    <br>
+    <video id="preview" style="height: 200px; width: 200px;"></video>
+    <br>
     <table class="table table-striped " id="myTable">
         <tr>
             <th>
@@ -90,6 +99,37 @@
                 }
             }
         }
+    </script>
+    <script type="text/javascript">
+
+        function scan() {
+            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+
+            scanner.addListener('scan', function (content) {
+
+                document.getElementById("myInput").value = content;
+                scanner.stop()
+            });
+
+            Instascan.Camera.getCameras().then(function (cameras) {
+
+                if (cameras.length > 0) {
+
+                    scanner.start(cameras[0]);
+
+                } else {
+
+                    console.error('No cameras found.');
+
+                }
+
+            }).catch(function (e) {
+
+                console.error(e);
+
+            });
+        }
+
     </script>
 </body>
 
