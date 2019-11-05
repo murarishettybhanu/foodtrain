@@ -46,12 +46,12 @@
               <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                   <li><a class="navbar-brand" style="padding-top:40px; color:#FFB03B;" href="/">Home</a></li>
-                   <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
-                    </li>
 
                   @if(!admin)
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/events">Event</a></li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/menu">Menu</a></li>
+                  <li><a class="navbar-brand" style="padding-top:40px;" href="/gallery">Gallery</a>
+                  </li>
                   @endif
                   @if(!auth)
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/login">Login</a></li>
@@ -62,7 +62,7 @@
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/auth/logout">Logout</a></li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/reserve">Reserve</a></li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/myorders">MyOrders</a>
-                    </li>
+                  </li>
                   <li><a class="navbar-brand" style="padding-top:40px;" href="/"><i class="fa fa-user-circle-o"></i>
                       {{user.username}}</a></li>
                   @endif
